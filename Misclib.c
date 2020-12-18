@@ -2,9 +2,9 @@
 *
 *	Libreria di supporto all'esame di Fondamenti di Informatica 1 del corso di Ingegneria Informatica UNIBO
 *
-*	Si tratta dell'implementazione originale di Misclib.h, si tratta delle implementazione più veloce e leggibile possibile, non ci sono complessi usperflui e alcun virtuosismo
-*	le funzioni sono state testate e funzionano per tutti i testcase testati. Dove era possibile scegliere è stato scelto ovviamente un approccio iterativo e non ricorsivo, in quanto più efficiente e meno pericoloso.
-* 
+*	Si tratta dell'implementazione originale di Misclib.h, si tratta delle implementazione piÃ¹ veloce e leggibile possibile, non ci sono complessi usperflui e alcun virtuosismo
+*	le funzioni sono state testate e funzionano per tutti i testcase testati. Dove era possibile scegliere Ã¨ stato scelto ovviamente un approccio iterativo e non ricorsivo, in quanto piÃ¹ efficiente e meno pericoloso.
+*
 *	@author:	leodom01
 *	@GitHub:	https://github.com/Leodom01
 *	@version:	0.1
