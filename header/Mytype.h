@@ -15,16 +15,18 @@
 *	For problems or infos please contact me at: leonardodominici01@gmail.com
 */
 
+#pragma once
+#include<stdlib.h>
+
 //Definisco la mia struct con un tipo custom
-typedef struct mytype {
+typedef struct {
 	int field1;
-	int field2;
 } myType;
 
 //Definisco un elemento della mia lista contenente elemeni myType
-typedef struct item {
+typedef struct item_struct{
 	myType value;
-	myType* next;
+	struct item_struct* next;
 } item;
 
 //Definisco il puntatore alla mia lista, ovvero il primo elemento
@@ -32,14 +34,21 @@ typedef item* root;
 
 //In base all'utilizzo che verrà fatto della struct decidere se implementare o meno e come implementare caso per caso le seguenti funzioni
 
-//Ritorna -1 se a è maggiore, 0 se sono uguali, 1 se b è maggiore
-int compare(myType a, myType b);
+//Stampa l tipo myType in base a come lo implemento, stampa a console
+void printMytype(myType target);
 
 //Ritorna 1 se sono uguali o 0 se non lo sono
 int equals(myType a, myType b);
+
+/**
+//Ritorna -1 se a è maggiore, 0 se sono uguali, 1 se b è maggiore
+int compare(myType a, myType b);
+
+
 
 //Classiche operazioni algebriche che potrebbero dover essere implementate
 myType sum(myType a, myType b);
 myType subtract(myType a, myType b);
 myType multiply(myType a, myType b);
 myType divide(myType a, myType b);
+*/
