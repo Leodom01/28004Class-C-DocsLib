@@ -1,5 +1,5 @@
 /**
-*
+*	Dominici Leonardo Matricola: 0000971128 Prova:
 *	Libreria di utility varie per liste di dati myType per l'esame di Fondamenti di Informatica 1 del corso di Ingegneria Informatica UNIBO
 *	la libria sotto riportata è l'implementazione che ho trovato più ooportuna per le funzioni definite in mtList.h
 *
@@ -30,7 +30,8 @@ root newList() {
 int isEmpty(root first_elem) {
 	if (first_elem == NULL) {
 		return -1;
-	}else {
+	}
+	else {
 		item* pointer;
 		pointer = first_elem;
 		while (pointer->next != NULL) {
@@ -69,7 +70,7 @@ root tail(root first_elem)
 root add(myType new_elem, root first_elem)
 {
 	item* toAdd;
-	toAdd = (item*) malloc(sizeof(item));
+	toAdd = (item*)malloc(sizeof(item));
 	if (toAdd == NULL) {
 		exit(-6);
 	}
@@ -87,11 +88,16 @@ void printList(root first_elem)
 {
 	item* pointer = first_elem;
 	printf("Stampo la lista: \n");
-	while (pointer->next != NULL) {
-		printMytype(pointer->value);
-		pointer = pointer->next;
+	if (pointer == NULL) {
+		printf("Lista vuota.\n");
 	}
-	printMytype(pointer->value);
+	else {
+		while (pointer->next != NULL) {
+			printMytype(pointer->value);
+			pointer = pointer->next;
+		}
+		printMytype(pointer->value);
+	}
 }
 
 myType get(root first_elem, int index)
@@ -137,7 +143,7 @@ int find(myType elem, root first_elem)
 	}
 	item* pointer = first_elem;
 	int index = 0;
-	while (pointer->next != NULL){
+	while (pointer->next != NULL) {
 		if (equals(pointer->value, elem)) {
 			return index;
 		}
@@ -153,7 +159,7 @@ int lenght(root first_elem)
 	if (first_elem == NULL) {
 		return lenght;
 	}
-	lenght ++;
+	lenght++;
 	item* pointer = first_elem;
 	while (pointer->next != NULL) {
 		lenght++;
@@ -162,7 +168,6 @@ int lenght(root first_elem)
 	return lenght;
 }
 
-//TODO Ho testato tutte le funzioni solo fino a qui
 root append(root first_elem_1, root first_elem_2)
 {
 	if (first_elem_1 == NULL) {
@@ -187,7 +192,7 @@ root newCopy(root first_elem)
 		return NULL;
 	}
 
-	root newRoot = (item*) malloc(sizeof(item));
+	root newRoot = (item*)malloc(sizeof(item));
 	if (newRoot == NULL) {
 		exit(-5);
 	}
@@ -197,7 +202,7 @@ root newCopy(root first_elem)
 	item* pointer = first_elem;
 	while (pointer->next != NULL) {
 		pointer = pointer->next;
-		newPointer->next = (item*) malloc(sizeof(item));
+		newPointer->next = (item*)malloc(sizeof(item));
 		if (newPointer->next == NULL) {
 			exit(-5);
 		}
@@ -230,25 +235,24 @@ void reverse(root first_elem)
 	int index_max = lenght(first_elem);
 	index_max = (int)ceil(index_max / 2);
 	for (int i = 0; i < index_max; i++) {
-		swapElem(first_elem, i, lenght(first_elem) - i);
+		swapElem(first_elem, i, lenght(first_elem) - (i + 1));
 	}
 }
 
-void destroy(root first_elem)
+void destroy(root* first_elem)
 {
-	item* pointer = first_elem;
+	item* pointer = *first_elem;
 
-	if (first_elem == NULL) {
+	if (*first_elem == NULL) {
 		return;
 	}
-	while (
-
-		pointer->next != NULL) {
+	while (pointer->next != NULL) {
 		item* toKill = pointer;
 		pointer = pointer->next;
 		free(toKill);
 	}
 	free(pointer);
+	*first_elem = NULL;
 }
 
 int lastIndexOf(root first_elem, myType elem)
@@ -264,14 +268,12 @@ int lastIndexOf(root first_elem, myType elem)
 	return index;
 }
 
-void deleteOcc(root first_elem, myType elem)
+void deleteOcc(root* first_elem, myType elem)
 {
-	int indexToKill = find(elem, first_elem);
-	item* preTarget = getPointer(first_elem, indexToKill - 1);
-	item* postTarget= getPointer(first_elem, indexToKill + 1);
-	preTarget->next = postTarget;
-	item* target = getPointer(first_elem, indexToKill);
-	free(target);
+	int index = find(elem, *first_elem);
+	if (index > -1) {
+		removeIndex(first_elem, index);
+	}
 }
 
 root subList(root first_elem, int start_index, int end_index)
@@ -281,13 +283,13 @@ root subList(root first_elem, int start_index, int end_index)
 		return NULL;
 	}
 	if (start_index < 0 || end_index < 0 || start_index >= len || end_index >= len) {
-		return NULL;
+		exit(-8);
 	}
 
-	root newRoot = (item*) malloc(sizeof(item));
+	root newRoot = (item*)malloc(sizeof(item));
 	int index = start_index;
 	item* pointer = newRoot;
-	while (index < end_index) {
+	while (index <= end_index && index < len) {
 		pointer->value = get(first_elem, index);
 		if (index != end_index) {
 			pointer->next = (item*)malloc(sizeof(item));
@@ -308,26 +310,28 @@ root subList(root first_elem, int start_index, int end_index)
 int fillArray(root first_elem, myType* arr, int arr_size)
 {
 	if (first_elem == NULL) {
-		return 0;
+		return -1;
 	}
 	int len = lenght(first_elem);
 	if (arr_size < len) {
-		return 0;
+		return -1;
 	}
 	for (int i = 0; i < len; i++) {
 		arr[i] = get(first_elem, i);
 	}
-	return 1;
+	return len;
 }
 
 void addAt(root* first_elem, myType elem, int index)
 {
 	if (first_elem == NULL || index > lenght(*first_elem)) {
 		exit(-7);
-	}else if (index == 0) {
+	}
+	else if (index == 0) {
 		*first_elem = add(elem, *first_elem);
 		return;
-	}else if (index == lenght(*first_elem)) {
+	}
+	else if (index == lenght(*first_elem)) {
 		item* toAdd = malloc(sizeof(item));
 		if (toAdd == NULL) {
 			exit(-7);
@@ -360,14 +364,17 @@ int removeIndex(root* first_elem, int index)
 	int len = lenght(*first_elem);
 	if (first_elem == NULL) {
 		return -2;
-	}else if (index >= len) {
+	}
+	else if (index >= len) {
 		return -1;
-	}else if (index == 0) {
+	}
+	else if (index == 0) {
 		item* toDel = *first_elem;
 		*first_elem = getPointer(*first_elem, 1);
 		free(toDel);
 		return 1;
-	}else if (index + 1 == len) {
+	}
+	else if (index + 1 == len) {
 		item* preToDel = getPointer(*first_elem, len - 2);
 		item* toDel = preToDel->next;
 		preToDel->next = NULL;
@@ -375,7 +382,7 @@ int removeIndex(root* first_elem, int index)
 		return 1;
 	}
 	else {
-		item* preToDel = getPointer(*first_elem, index);
+		item* preToDel = getPointer(*first_elem, index - 1);
 		item* toDel = preToDel->next;
 		item* postToDel = toDel->next;
 		preToDel->next = postToDel;
@@ -385,25 +392,140 @@ int removeIndex(root* first_elem, int index)
 
 }
 
-/**
+root arrayToList(myType arr[], int dim) {
+	root toReturn = newList();
+	for (int i = 0; i < dim; i++) {
+		add(arr[i], toReturn);
+	}
+
+	return toReturn;
+}
+
+int trovaPosMax(root first_elem) {
+	int i, posMax = 0;
+	int n = lenght(first_elem);
+	for (i = 1; i < n; i++)
+		if (compare(get(first_elem, posMax), get(first_elem, i)) == 1) posMax = i;
+	return posMax;
+}
+
+void insOrd(root first_elem, int pos)
+{
+	int i = pos - 1;
+	myType x = get(first_elem, pos);
+	while (i >= 0 && compare(x, get(first_elem, i)) == 1) {
+		getPointer(first_elem, i+1)->value = getPointer(first_elem, i)->value; /* crea lo spazio */
+		i--;
+	}
+	getPointer(first_elem, i + 1)->value = x;
+}
+
+void merge(root first_elem, int i1, int i2, int fine, root second_elem)
+{
+	int i = i1, j = i2, k = i1;
+	while (i <= i2 - 1 && j <= fine) {
+		if (compare(get(first_elem, i), get(first_elem, j)) == 1)
+			getPointer(second_elem, k)->value = get(first_elem, i++);
+		else
+			getPointer(second_elem, k)->value = get(first_elem, j++);
+		k++;
+	}
+	while (i <= i2 - 1) {
+		getPointer(second_elem, k)->value = get(first_elem, i++);
+		k++;
+	}
+	while (j <= fine) {
+		getPointer(second_elem, k)->value = get(first_elem, j++);
+		k++;
+	}
+	for (i = i1; i <= fine; i++) {
+		getPointer(first_elem, i)->value = get(second_elem, i);
+	}
+}
+
+void mergeSortInner(root first_elem, int first, int last, root second_elem)
+{
+	int mid;
+	if (first < last) {
+		mid = (last + first) / 2;
+		mergeSortInner(first_elem, first, mid, second_elem);
+		mergeSortInner(first_elem, mid + 1, last, second_elem);
+		merge(first_elem, first, mid + 1, last, second_elem);
+	}
+}
+
+void quickSortInner(root first_elem, int iniz, int fine)
+{
+	int i, j, iPivot;
+	myType pivot;
+	if (iniz < fine)
+	{
+		i = iniz;
+		j = fine;
+		iPivot = fine;
+		pivot = get(first_elem, iPivot);
+		do { /* trova la posizione del pivot */
+			while (i < j && (compare(get(first_elem, i), pivot) == 1 || compare(get(first_elem, i), pivot) == 0)) i++;
+			while (j > i && (compare(get(first_elem, j), pivot) == -1 || compare(get(first_elem, j), pivot) == 0)) j--;
+			if (i < j) swapElem(first_elem, i, j);
+		} while (i < j);
+		if (i != iPivot && compare(get(first_elem, i), get(first_elem, iPivot)) != 0)
+		{
+			swapElem(first_elem, i, iPivot);
+			iPivot = i;
+		}
+		/* ricorsione sulle sottoparti, se necessario */
+		if (iniz < iPivot - 1)
+			quickSortInner(first_elem, iniz, iPivot - 1);
+		if (iPivot + 1 < fine)
+			quickSortInner(first_elem, iPivot + 1, fine);
+	}
+}
+
 void naiveSort(root first_elem)
 {
+	int p;
+	int size = lenght(first_elem);
+	while (size > 1) {
+		p = trovaPosMax(first_elem);
+		if (p < size - 1) {
+			swapElem(first_elem, p, size - 1);
+		}
+		size--;
+	}
 }
 
 void bubbleSort(root first_elem)
 {
+	int i, ordinato = 0;
+	int size = lenght(first_elem);
+	while (size > 1 && !ordinato) {
+		ordinato = 1;
+		for (i = 0; i < size - 1; i++)
+			if (compare(get(first_elem, i), get(first_elem, i+1)) == -1) {
+				swapElem(first_elem, i, i + 1);
+				ordinato = 0;
+			}
+		size--;
+	}
 }
 
 void insertSort(root first_elem)
 {
+	int size = lenght(first_elem);
+	int k;
+	for (k = 1; k < size; k++)
+		insOrd(first_elem, k);
 }
 
-void mergeSort(root first_elem)
-{
+void mergeSort(root* first_elem) {
+	root second_elem = newCopy(*first_elem);
+	mergeSortInner(*first_elem, 0, lenght(*first_elem)-1, second_elem);
+	destroy(first_elem);
+	*first_elem = second_elem;
 }
 
 void quickSort(root first_elem)
 {
+	quickSortInner(first_elem, 0, lenght(first_elem) - 1);
 }
-
-*/

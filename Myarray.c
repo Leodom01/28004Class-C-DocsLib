@@ -1,3 +1,18 @@
+/**
+*	Dominici Leonardo Matricola: 0000971128 Prova:
+*	Libreria di supporto all'esame di Fondamenti di Informatica 1 del corso di Ingegneria Informatica UNIBO
+*
+*	Si tratta della libreria di implementazione originale alla Myarray.h, è una comoda implementazione per lavorare facilmente con array di int e di double, si possono usare facilmente anche i float apportando prima un cast
+*	Per ragioni sintattiche legate al C i nomi delle funzioni sono piuttosto sconvenienti.
+*
+*	@author:	leodom01
+*	@GitHub:	https://github.com/Leodom01
+*	@version:	0.1
+*
+*	Visit my GitHub page to download the last version of the lib
+*	For problems or infos please contact me at: leonardodominici01@gmail.com
+*/
+
 #include "Myarray.h"
 #include <stdio.h>
 #include <stdlib.h>

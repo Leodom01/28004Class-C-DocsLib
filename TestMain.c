@@ -9,6 +9,8 @@
 #include "Myarray.h"
 #include "Mylist.h"
 
+/**
+
 int main() {
 
 	root list_root = newList();
@@ -31,3 +33,5 @@ int main() {
 
 	return 0;
 }
+
+*/

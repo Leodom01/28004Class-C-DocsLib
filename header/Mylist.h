@@ -1,5 +1,5 @@
 /**
-*
+*	Dominici Leonardo Matricola: 0000971128 Prova:
 *	Libreria di utility varie per liste di dati myType per l'esame di Fondamenti di Informatica 1 del corso di Ingegneria Informatica UNIBO
 *	Molte delle funzioni sotto elencate richiedono l'implementazione completa delle funzioni in myType siccome alcune funzioni richiedono di poter
 *	comparare fra loro oggetti o di effettuare somme, o comunque lavorare con questi tipi di fati custom
@@ -165,9 +165,9 @@ void reverse(root first_elem);
 /**
 * Cancella completamente la lista facendo la free di ogni suo elemento, trasforma il puntatore alla lista in NULL in quanto la lista è vuota
 *
-* @param first_elem:	Il puntatore alla lista
+* @param first_elem:	Il puntatore alla lista per riferimento perchè va trasformato in NULL
 */
-void destroy(root first_elem);
+void destroy(root* first_elem);
 
 /**
 * Restituisce l'indice della ultima occorrenza di un dato myType, oppure la prima occorrenza partendo dal fondo
@@ -183,10 +183,10 @@ int lastIndexOf(root first_elem, myType elem);
 /**
 * Rimuove la prima occorrenza dell'elemento all'interno della lista, effettua la rimozione con una free, elimina totalmente quel nodo dalla memoria
 *
-* @param first_elem:	Il puntatore alla lista
+* @param first_elem:	Il puntatore della lista per riferimneto (siccome nel caso in cui fosse il primo elemento da cancellare il puntatore alla lsita dovrebbe cambiare
 * @param elem:			L'elemento del quale cancellare il primo nodo
 */
-void deleteOcc(root first_elem, myType elem);
+void deleteOcc(root* first_elem, myType elem);
 
 /**
 * Crea una sottolista della lista data a partire da un dato elemento e poi ne restituisce il puntatore, non c'è structure sharing. Se l'indice di inizio non è presente nella lista
@@ -197,19 +197,21 @@ void deleteOcc(root first_elem, myType elem);
 * @param end_index:		L'indice a cui far terminare la sottolista
 *
 * @return :				Il puntatore alla sottolista
-* @return NULL:			Se la lista di cui fare la sottolista è vuota o se viene inserito un valore minore di zero in start_index o end_index
+* @return NULL:			Se la lista di cui fare la sottolista è vuota
+* @return exit(-8):		Se gli estremi della sottolista sono sbagliati
 */
 root subList(root first_elem, int start_index, int end_index);
 
 /**
 * Riempie un'array con tutti gli elementi della lista, occhio a fornire un'array di dimensione sufficientemente grande
+* Ritorna poi il numero di elementi inseriti dentro l'array
 *
 * @param first_elem:	Il puntatore alla lista
 * @param *arr:			Il puntatore al primo elemento dell'array da riempire
 * @param size:			La dimensione dell'array da riempire
 *
-* @return 1:			Se tutto è andato a buon fine
-* @return 0:			Se la dimensione dell'array non è abbastanza grande per contenere tutti gli elementi della lista
+* @return :				Il numero di elementi che sono stati inseriti nell'array
+* @return -1:			Se la dimensione dell'array non è abbastanza grande per contenere tutti gli elementi della lista
 */
 int fillArray(root first_elem, myType* arr, int arr_size);
 
@@ -238,6 +240,17 @@ void addAt(root* first_elem, myType elem, int index);
 int removeIndex(root* first_elem, int index);
 
 /**
+* Dato un array di dati myType la funzione ritorna il puntatore ad una lista formata dagli elementi dell'array
+*
+* @param arr[]:			L'array dal quale prendere gli elementi da mettere nella lista
+* @param dim:			La dimensione dell'array
+*
+* @return NULL:			Se l'array è vuoto
+* @return :				Il puntatore alla lista che contiene tutti gli elementi dell'array
+*/
+root arrayToList(myType arr[], int dim);
+
+/**
 * Esegue il naive sort sulla lista, è necessario implementare la funzione compare in myType.c
 *
 * @param first_elem:	Il puntatore alla lista
@@ -261,9 +274,9 @@ void insertSort(root first_elem);
 /**
 * Esegue il merge sort sulla lista, è necessario implementare la funzione compare in myType.c
 *
-* @param first_elem:	Il puntatore alla lista
+* @param first_elem:	Il puntatore per riferimento alla lista, siccome durante il processo creo un'altra lista, resterà solo quella ordinata
 */
-void mergeSort(root first_elem);
+void mergeSort(root* first_elem);
 
 /**
 * Esegue il quick sort sulla lista, è necessario implementare la funzione compare in myType.c

@@ -1,5 +1,5 @@
 /**
-*
+*	Dominici Leonardo Matricola: 0000971128 Prova:
 *	Libreria di supporto all'esame di Fondamenti di Informatica 1 del corso di Ingegneria Informatica UNIBO
 *
 *	La libreria contiene una serie di definizione di funzioini di supprto che possono essere utili, inoltre fornisce uno spazio libero in cui inserire funzioni fatte al volo in sede d'esame

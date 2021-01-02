@@ -1,5 +1,5 @@
 /**
-*
+*	Dominici Leonardo Matricola: 0000971128 Prova:
 *	Libreria di utility varie per array di int e di double per l'esame di Fondamenti di Informatica 1 del corso di Ingegneria Informatica UNIBO
 *	Molte delle funzioni sono funzioni analoghe già presenti e implementate in string.h per le stringhe
 *	Per un implementazione un po' più wise di array con tipi custom vedi MyarrayTypedef.h
