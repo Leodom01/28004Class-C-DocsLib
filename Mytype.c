@@ -29,7 +29,7 @@
 /**
 void printMytype(myType target)
 {
-	printf("Field1: %d\n", target.field1);
+	return;
 }
 
 int compare(myType a, myType b)
@@ -39,12 +39,7 @@ int compare(myType a, myType b)
 
 int equals(myType a, myType b)
 {
-	if (a.field1 == b.field1) {
-		return 1;
-	}
-	else {
-		return 0;
-	}
+	return;
 }
 
 myType sum(myType a, myType b)

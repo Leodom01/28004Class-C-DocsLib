@@ -1,8 +1,9 @@
 /**
 *
-*	Libreria per definire un tipo di dato custom a cui collegare più funzioni di base, crea anche i puntatori per aggiungere una lista di struct del tipo che
-*	definisco in questa libreria, per usare tutte le funzioni fornite nella altre libreria ricordarsi di implementare i metodi sotto elencati, servono per
-*	sorting, comparazioni e altre funzioni varie.
+*	Libreria per definire un tipo di dato custom aggiuntivo rispetto a Mytype.h, spesso è necessario in quanto vengono richiesti due dati custom differenti.
+* Il primo, il dato principale dovrebbe essere Mytype.h, permettendo di implementare anche le liste, questo secondo tipo di dato è un po' più scarno ma
+* siccome viene spesso usato è più comodo averlo già presente in caso di necessità. Implementa le funzioni come equals e compare relative quindi a operazioni
+* sul dato ma non implementa le liste. Implementa però gli algoritmi di ordinamento su array.
 *
 *	la libreria contiene il prototipo per creare al volo nuove struct e lista contenenti la struct appena creata, è poi necesario implementare le funzioni sotto
 *	elencate se si vogliono usare tutti i metodi forniti nella altre librerie siccome quelle libreria si potrebbero appoggiare a questi metodi.
@@ -20,27 +21,18 @@
 #pragma once
 #include<stdlib.h>
 
-//Definisco la mia struct con un tipo custom
-typedef struct {
-	int field1;
-} myType;
+//Definisco un secondo tipo di dato che serve di solito all'esame senza bisogno che esso implementi liste, spesso ne servono array e il loro ordinamento
+typedef struct{
+	int fieldA;
+} mySecondType;
 
-//Definisco un elemento della mia lista contenente elemeni myType
-typedef struct item_struct{
-	myType value;
-	struct item_struct* next;
-} item;
-
-//Definisco il puntatore alla mia lista, ovvero il primo elemento
-typedef item* root;
-
-//In base all'utilizzo che verrà fatto della struct decidere se implementare o meno e come implementare caso per caso le seguenti funzioni
+//Vari tipi di operazioni da effettuars
 /**
-*	Stampa il tipo myType in base a come lo implemento, stampa a console
+*	Stampa il tipo mySecondType in base a come lo implemento, stampa a console
 *
 * @param target: 	La variabile che devo stampare a console
 */
-//void printMytype(myType target);
+//void printMySecondType(mySecondType target);
 
 /**
 * Ritorna 1 se sono uguali o 0 se non lo sono (Secondo i parametri che implemento)
@@ -51,7 +43,7 @@ typedef item* root;
 * @return 0:			Se i due elementi non sono uguali
 * @return 1:			Se i due elementi sono uguali
 */
-//int equals(myType a, myType b);
+//int equalsMySecondType(mySecondType a, mySecondType b);
 
 /**
 * Ritorna -1 se a è maggiore, 0 se sono uguali, 1 se b è maggiore
@@ -63,10 +55,4 @@ typedef item* root;
 * @return  0:			Se a è uguale a b
 * @return  1:			Se a è minore di b
 */
-//int compare(myType a, myType b);
-
-//Classiche operazioni algebriche che potrebbero dover essere implementate
-//myType sum(myType a, myType b);
-//myType subtract(myType a, myType b);
-//myType multiply(myType a, myType b);
-//myType divide(myType a, myType b);
+//int comparemySecondType(mySecondType a, mySecondType b);
