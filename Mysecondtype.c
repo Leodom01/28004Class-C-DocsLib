@@ -27,3 +27,81 @@
 //int equalsMySecondType(mySecondType a, mySecondType b){return int;}
 
 //int comparemySecondType(mySecondType a, mySecondType b){return int;}
+
+void printMySecondType(mySecondType target)
+{
+	printf("FieldA:  %d\n", target.fieldA);
+}
+
+int equalsMySecondType(mySecondType a, mySecondType b)
+{
+	if (a.fieldA == b.fieldA) {
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+
+int comparemySecondType(mySecondType a, mySecondType b)
+{
+	if (a.fieldA > b.fieldA) {
+		return -1;
+	}
+	else if (equalsMySecondType(a, b)) {
+		return 0;
+	}
+	else {
+		return 1;
+	}
+}
+
+int compareMySecondType(mySecondType a, mySecondType b)
+{
+	return 0;
+}
+
+void scambiaMySecondType(mySecondType* a, mySecondType* b)
+{
+}
+
+int trovaPosMaxMySecondType(mySecondType v[], int n)
+{
+	return 0;
+}
+
+void insOrdMySecondType(mySecondType v[], int pos)
+{
+}
+
+void naiveSortMySecondType(mySecondType* arr, int size)
+{
+}
+
+void bubbleSortMySecondType(mySecondType* arr, int size)
+{
+}
+
+void insertSortMySecondType(mySecondType* arr, int size)
+{
+}
+
+void mergeMySecondType(mySecondType v[], int i1, int i2, int fine, mySecondType vout[])
+{
+}
+
+void mergeSortInnerMySecondType(mySecondType v[], int first, int last, mySecondType vout[])
+{
+}
+
+void mergeSortMySecondType(mySecondType* in_arr, int size, mySecondType* out_arr)
+{
+}
+
+void quickSortInnerMySecondType(mySecondType a[], int iniz, int fine)
+{
+}
+
+void quickSortMySecondType(mySecondType* arr, int size)
+{
+}

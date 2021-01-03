@@ -1,3 +1,4 @@
+//Dominici Leonardo Matricola: 0000971128 Prova:
 /**
 *
 *	Libreria di supporto all'esame di Fondamenti di Informatica 1 del corso di Ingegneria Informatica UNIBO
@@ -20,3 +21,8 @@
 #include "Misclib.h"
 #include "Myarray.h"
 #include "Mytype.h"
+#include "Mylist.h"
+
+int main() {
+
+}

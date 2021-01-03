@@ -26,7 +26,7 @@ typedef struct {
 } myType;
 
 //Definisco un elemento della mia lista contenente elemeni myType
-typedef struct item_struct{
+typedef struct item_struct {
 	myType value;
 	struct item_struct* next;
 } item;
@@ -40,7 +40,7 @@ typedef item* root;
 *
 * @param target: 	La variabile che devo stampare a console
 */
-//void printMytype(myType target);
+void printMytype(myType target);
 
 /**
 * Ritorna 1 se sono uguali o 0 se non lo sono (Secondo i parametri che implemento)
@@ -51,7 +51,7 @@ typedef item* root;
 * @return 0:			Se i due elementi non sono uguali
 * @return 1:			Se i due elementi sono uguali
 */
-//int equals(myType a, myType b);
+int equals(myType a, myType b);
 
 /**
 * Ritorna -1 se a è maggiore, 0 se sono uguali, 1 se b è maggiore
@@ -63,7 +63,7 @@ typedef item* root;
 * @return  0:			Se a è uguale a b
 * @return  1:			Se a è minore di b
 */
-//int compare(myType a, myType b);
+int compare(myType a, myType b);
 
 //Classiche operazioni algebriche che potrebbero dover essere implementate
 //myType sum(myType a, myType b);

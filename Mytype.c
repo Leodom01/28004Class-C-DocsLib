@@ -26,22 +26,35 @@
 //L'implementazione delle seguenti funzioni dipende fortemente da come è definito myType effettivamente e dallo scopo per cui deve essere usato
 //Si suggerisce di implementare almeno compare e printMytype
 
-/**
 void printMytype(myType target)
 {
-	return;
+	printf("Field1:  %d", target.field1);
 }
 
 int compare(myType a, myType b)
 {
-	return NULL;
+	if (a.field1 > b.field1) {
+		return -1;
+	}
+	else if (equals(a, b)) {
+		return 0;
+	}
+	else {
+		return -1;
+	}
 }
 
 int equals(myType a, myType b)
 {
-	return;
+	if (a.field1 == b.field1) {
+		return 1;
+	}
+	else {
+		return 0;
+	}
 }
 
+/**
 myType sum(myType a, myType b)
 {
 	return;
