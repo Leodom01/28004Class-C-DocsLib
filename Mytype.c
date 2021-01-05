@@ -21,6 +21,7 @@
 #pragma once
 #include "Mytype.h"
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 
 //L'implementazione delle seguenti funzioni dipende fortemente da come è definito myType effettivamente e dallo scopo per cui deve essere usato

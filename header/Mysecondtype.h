@@ -58,6 +58,14 @@ int equalsMySecondType(mySecondType a, mySecondType b);
 int compareMySecondType(mySecondType a, mySecondType b);
 
 /**
+* Stampa un'array di dim elementi di mySecondType, usa l'implementazione di printMySecondType
+*
+* @param *arr:	Il puntatore all'array di mySecondType
+* @param dim:	Il numero di elementi di *arr
+*/
+void printArrMySecondType(mySecondType* arr, int dim);
+
+/**
 * Funzione utilizzata dentro agli algortmi di sorting, scambia semplicemente di due valori passati
 *
 * @param *a:	Il primo valore da scambiare

@@ -22,7 +22,9 @@
 #include "Myarray.h"
 #include "Mytype.h"
 #include "Mylist.h"
+#include "Mysecondtype.h"
 
 int main() {
 
+	return 0;
 }
