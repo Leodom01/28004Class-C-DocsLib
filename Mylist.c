@@ -287,6 +287,9 @@ root subList(root first_elem, int start_index, int end_index)
 	}
 
 	root newRoot = (item*)malloc(sizeof(item));
+	if (newRoot == NULL) {
+		exit(-7);
+	}
 	int index = start_index;
 	item* pointer = newRoot;
 	while (index <= end_index && index < len) {
@@ -401,11 +404,16 @@ root arrayToList(myType arr[], int dim) {
 	return toReturn;
 }
 
-int trovaPosMax(root first_elem) {
+int trovaPosMax(root first_elem, int dim_to_consider) {
 	int i, posMax = 0;
-	int n = lenght(first_elem);
-	for (i = 1; i < n; i++)
-		if (compare(get(first_elem, posMax), get(first_elem, i)) == 1) posMax = i;
+	int n = dim_to_consider;
+	int test;
+	for (i = 1; i < n; i++) {
+		if ((test = compare(get(first_elem, posMax), get(first_elem, i))) == 1) {
+			posMax = i;
+		}
+	}
+	printf("%d", posMax);
 	return posMax;
 }
 
@@ -487,7 +495,7 @@ void naiveSort(root first_elem)
 	int p;
 	int size = lenght(first_elem);
 	while (size > 1) {
-		p = trovaPosMax(first_elem);
+		p = trovaPosMax(first_elem, size);
 		if (p < size - 1) {
 			swapElem(first_elem, p, size - 1);
 		}

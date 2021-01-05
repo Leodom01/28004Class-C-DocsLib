@@ -29,7 +29,7 @@
 
 void printMytype(myType target)
 {
-	printf("Field1:  %d", target.field1);
+	printf("Field1:  %d\n", target.field1);
 }
 
 int compare(myType a, myType b)
@@ -41,7 +41,7 @@ int compare(myType a, myType b)
 		return 0;
 	}
 	else {
-		return -1;
+		return 1;
 	}
 }
 
