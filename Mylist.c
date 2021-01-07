@@ -150,6 +150,9 @@ int find(myType elem, root first_elem)
 		pointer = pointer->next;
 		index++;
 	}
+	if (equals(pointer->value, elem)) {
+		return index;
+	}
 	return -1;
 }
 
