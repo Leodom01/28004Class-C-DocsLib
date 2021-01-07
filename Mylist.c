@@ -401,7 +401,7 @@ int removeIndex(root* first_elem, int index)
 root arrayToList(myType arr[], int dim) {
 	root toReturn = newList();
 	for (int i = 0; i < dim; i++) {
-		add(arr[i], toReturn);
+		toReturn = add(arr[i], toReturn);
 	}
 
 	return toReturn;
